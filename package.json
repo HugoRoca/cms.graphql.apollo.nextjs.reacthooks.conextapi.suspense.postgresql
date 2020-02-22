@@ -1,0 +1,30 @@
+{
+  "name": "cms.graphql.apollo.nextjs.reacthooks.contextapi.suspense.postgresql",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HugoRoca/cms.graphql.apollo.nextjs.reacthooks.contextapi.suspense.postgresql.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HugoRoca/cms.graphql.apollo.nextjs.reacthooks.contextapi.suspense.postgresql/issues"
+  },
+  "homepage": "https://github.com/HugoRoca/cms.graphql.apollo.nextjs.reacthooks.contextapi.suspense.postgresql#readme",
+  "devDependencies": {
+    "@babel/core": "^7.8.4",
+    "@babel/node": "^7.8.4",
+    "@babel/preset-env": "^7.8.4",
+    "nodemon": "^2.0.2"
+  },
+  "dependencies": {
+    "apollo-server": "^2.10.1",
+    "graphql": "^14.6.0"
+  }
+}
