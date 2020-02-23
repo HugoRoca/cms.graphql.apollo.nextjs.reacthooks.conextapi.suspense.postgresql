@@ -1,5 +1,8 @@
 import { ApolloServer, makeExecutableSchema } from "apollo-server"
 
+// Models
+import models from "./models";
+
 const typeDefs = `
     type Hello {
         message: String!
@@ -26,7 +29,12 @@ const schema = makeExecutableSchema({
 })
 
 const apolloServer = new ApolloServer({
-    schema
+    schema,
+    context: {
+        models
+    }
 })
 
-apolloServer.listen(5000).then(({ url }) => console.log(`Running on ${url}`))
+models.sequelize.sync({ force: true }).then(() => {
+    apolloServer.listen(5000).then(({ url }) => console.log(`Running on ${url}`))
+})
