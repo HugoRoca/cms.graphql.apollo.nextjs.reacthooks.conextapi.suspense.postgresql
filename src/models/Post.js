@@ -6,12 +6,13 @@ export default (sequelize, { BOOLEAN, STRING, TEXT, UUID, UUIDV4 }) => {
             type: UUID,
             defaultValue: UUIDV4()
         },
-        tittle: {
+        title: {
             type: STRING,
             allowNull: false
         },
         slug: {
             type: STRING,
+            unique: true,
             allowNull: false
         },
         readingTime: {
@@ -19,11 +20,11 @@ export default (sequelize, { BOOLEAN, STRING, TEXT, UUID, UUIDV4 }) => {
             allowNull: false,
             defaultValue: '3 min'
         },
-        body: {
+        content: {
             type: TEXT,
             allowNull: false
         },
-        languaje: {
+        language: {
             type: STRING,
             allowNull: false,
             defaultValue: 'es'
