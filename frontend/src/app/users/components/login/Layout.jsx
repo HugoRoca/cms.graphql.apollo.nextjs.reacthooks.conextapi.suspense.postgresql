@@ -2,21 +2,21 @@
 import React from 'react'
 import Head from 'next/head'
 
-// components
-import Login from './login'
+// Components
+import Login from './Login'
 
 // Styles
 import styles from './Layout.scss'
 
-const Layout = () => {
+const Layout = () => (
   <>
     <Head>
       <title>Login</title>
-      <meta name="title" content="Login"></meta>
+      <meta name="title" content="Login" />
     </Head>
 
     <Login />
   </>
-}
+)
 
 export default Layout

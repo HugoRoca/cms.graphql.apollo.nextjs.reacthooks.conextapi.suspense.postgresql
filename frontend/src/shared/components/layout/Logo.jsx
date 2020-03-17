@@ -1,37 +1,38 @@
+// Dependencies
 import React from 'react'
 import { bool } from 'prop-types'
-import { Retina } from 'foog-ui'
+import { Retina } from 'fogg-ui'
 
-// Componentes
+// Components
 import Link from 'next/link'
 
 // Styles
 import styles from './Logo.scss'
 
 const Logo = props => {
-  const { isoType = '', center = ''} = props;
+  const { isotype = '', center = '' } = props;
 
   return (
-    <div className={`${styles.logo} ${center && styles.center} ${isoType && styles.isoType}`}>
-      <link href="/" title="Codejobs">
+    <div className={`${styles.logo} ${center && styles.center} ${isotype && styles.isotype}`}>
+      <Link href="/" title="Codejobs">
         <a>
-          <Retina src="/images/logo.png"></Retina>
+          <Retina src="/images/logo.png" />
 
-          {!isoType && (
+          {!isotype && (
             <span className={styles.brand}>
               <span className={styles.code}>CODE</span>
               <span className={styles.jobs}>JOBS</span>
             </span>
           )}
         </a>
-      </link>
+      </Link>
     </div>
   );
 };
 
 Logo.propTypes = {
   center: bool,
-  isoType: bool
+  isotype: bool
 }
 
 export default Logo

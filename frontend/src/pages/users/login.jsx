@@ -1,6 +1,6 @@
 // Components
 import LoginLayout from '../../app/users/components/Login/Layout'
 
-const LoginPage = () => <LoginLayout />
+const Login = () => <LoginLayout />
 
-export default LoginPage
+export default Login
