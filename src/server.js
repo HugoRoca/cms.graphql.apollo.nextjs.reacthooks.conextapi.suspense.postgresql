@@ -42,8 +42,8 @@ nextApp.prepare().then(() => {
       return nextApp.render(req, res, '/users/login', req.query)
     })
 
-    app.use('/dashboard', isConnected(true, 'god', '/login?redirectTo=/dashboard'), (req, res) => {
-      return nextApp.render(req, res, '/dashboard', req.query)
+    app.get('/dashboard', isConnected(true, 'god', '/login?redirectTo=/dashboard'), (req, res) => {
+      return nextApp.render(req, res, '/dashboard/index', req.query)
     })
 
     app.all('*', (req, res) => {

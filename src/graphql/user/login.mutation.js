@@ -1,6 +1,7 @@
-import { gpl } from 'apollo-boost'
+// Dependencies
+import { gql } from 'apollo-boost'
 
-export default gpl`
+export default gql`
   mutation login($email: String!, $password: String!) {
     login(input: { email: $email, password: $password }) {
       token

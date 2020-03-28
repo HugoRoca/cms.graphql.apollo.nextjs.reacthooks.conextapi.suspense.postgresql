@@ -1,3 +1,3 @@
 import React from 'react'
 
-export default () => <h1>DashBoard page</h1>
+export default () => <h1>Dashboard page</h1>

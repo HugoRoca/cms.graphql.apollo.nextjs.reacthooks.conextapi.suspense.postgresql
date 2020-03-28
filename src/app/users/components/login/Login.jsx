@@ -1,29 +1,54 @@
 // Dependencies
-import React, { Component } from 'react'
-import { DarkButton, PrimaryButton, Input, RenderIf } from 'fogg-ui'
+import React, { Component } from "react";
+import { Alert, DarkButton, PrimaryButton, Input, RenderIf } from "fogg-ui";
+import { fun, string, func } from "prop-types";
+import { cx, redirectTo } from "fogg-utils";
 
 // Components
-import Logo from '@layout/Logo'
+import Logo from "@layout/Logo";
+
+import { FormContext } from "@contexts/form";
 
 // Styles
-import styles from './Login.scss'
+import styles from "./Login.scss";
 
 class Login extends Component {
   state = {
-    ready: false
-  }
+    ready: false,
+    errorMessage: "",
+    invalidLogin: false
+  };
 
   componentDidMount() {
     this.setState({
       ready: true
-    })
+    });
+  }
+
+  handleLogin = async user => {
+    const { login, currentUrl } = this.props
+    const response = await login(user)
+
+    if (response.error) {
+      this.setState({
+        invalidLogin: true,
+        errorMessage: response.message
+      })
+    } else {
+      redirectTo(currentUrl || '/')
+    }
   }
 
   render() {
-    const { ready } = this.state
+    const { ready, errorMessage, invalidLogin } = this.state;
+    const { handleInputChange, values } = this.context;
 
     return (
       <>
+        <RenderIf isTrue={invalidLogin}>
+          <Alert danger center flat>{errorMessage}</Alert>
+        </RenderIf>
+
         <RenderIf isTrue={ready}>
           <div className={styles.login}>
             <div className={styles.wrapper}>
@@ -35,6 +60,8 @@ class Login extends Component {
                   className={styles.email}
                   name="email"
                   placeholder="Email"
+                  onChange={handleInputChange}
+                  value={values.email}
                 />
 
                 <Input
@@ -42,17 +69,15 @@ class Login extends Component {
                   className={styles.password}
                   name="password"
                   placeholder="Password"
+                  onChange={handleInputChange}
+                  value={values.password}
                 />
 
                 <div className={styles.actions}>
                   <div className={styles.left}>
-                    <DarkButton name="login">
-                      Login
-                    </DarkButton>
+                    <DarkButton name="login" onClick={() => this.handleLogin(values)}>Login</DarkButton>
                     &nbsp;
-                    <PrimaryButton name="register">
-                      Register
-                    </PrimaryButton>
+                    <PrimaryButton name="register">Register</PrimaryButton>
                   </div>
                 </div>
               </div>
@@ -60,8 +85,15 @@ class Login extends Component {
           </div>
         </RenderIf>
       </>
-    )
+    );
   }
 }
 
-export default Login
+Login.contextType = FormContext;
+
+Login.propTypes = {
+  login: func,
+  currentUrl: string
+};
+
+export default Login;

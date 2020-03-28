@@ -1,6 +1,8 @@
+// Dependencies
 import jwt from 'jsonwebtoken'
 import { getBase64 } from 'fogg-utils'
 
+// Configuration
 import config from '@config'
 
 export function User(req) {
@@ -8,6 +10,7 @@ export function User(req) {
 
   function jwtVerify(cb, at = false) {
     const accessToken = req.cookies.at || at
+
     jwt.verify(accessToken, secretKey, (error, accessTokenData = {}) => {
       const { data: user } = accessTokenData
 
@@ -15,7 +18,7 @@ export function User(req) {
         return cb(false)
       }
 
-      return user ? cb(getBase64(user)) : cb(false)
+      return cb(getBase64(user))
     })
   }
 
@@ -31,18 +34,18 @@ export function User(req) {
   }
 }
 
-export const isConnected = (isLogged = true, privilage = 'user', redirectTo = '/') => (req, res, next) => {
+export const isConnected = (isLogged = true, privilege = 'user', redirectTo = '/') => (req, res, next) => {
   User(req).jwtVerify(user => {
     if (!user && !isLogged) {
       return next()
     } else if (user && isLogged) {
-      if (privilage === 'god') {
-        if (user.privilage === 'god') {
+      if (privilege === 'god') {
+        if (user.privilege === 'god') {
           return next()
         } else {
           res.redirect(redirectTo)
         }
-      } else if (privilage === 'user' && user.privilage === 'user') {
+      } else if (privilege === 'user' && user.privilege === 'user') {
         return next()
       }
     } else {
