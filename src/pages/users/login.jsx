@@ -1,5 +1,6 @@
+// Dependencies
 import { ApolloProvider } from 'react-apollo-hooks'
-import { string } from 'prop-types'
+import propTypes from '@propTypes'
 import { isBrowser } from 'fogg-utils'
 
 // Hooks
@@ -9,6 +10,7 @@ import useApolloClient from '@apollo-client'
 import FormProvider from '@contexts/form'
 import UserProvider from '@contexts/user'
 
+// Components
 import LoginLayout from '@users/components/Login/Layout'
 
 const LoginPage = ({
@@ -24,7 +26,7 @@ const LoginPage = ({
 )
 
 LoginPage.propTypes = {
-  currentUrl: string
+  currentUrl: propTypes.currentUrl
 }
 
 export default LoginPage

@@ -1,3 +1,4 @@
+// Dependencies
 import jwt from 'jsonwebtoken'
 import { getBase64 } from 'fogg-utils'
 

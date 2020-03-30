@@ -15,7 +15,7 @@
 
     .logo {
       h1 {
-        @include prefix(background-clip, text);
+        @include prefix(background-clip, text)
         color: $white;
         font-family: $poppins;
         font-size: 18px;

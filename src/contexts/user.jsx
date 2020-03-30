@@ -1,13 +1,13 @@
-// Depdencies
-import React, { createContext, useState } from "react"
-import propTypes from "@propTypes"
-import { useApolloClient } from "react-apollo-hooks"
-import { useCookies } from "react-cookie"
-import { getGraphQlError } from "fogg-utils"
+// Dependencies
+import React, { createContext, useState } from 'react'
+import propTypes from '@propTypes'
+import { useApolloClient } from 'react-apollo-hooks'
+import { useCookies } from 'react-cookie'
+import { getGraphQlError } from 'fogg-utils'
 import { getUserData } from '@lib/jwt'
 
 // Mutations
-import LOGIN_MUTATION from "@graphql/user/login.mutation"
+import LOGIN_MUTATION from '@graphql/user/login.mutation'
 
 export const UserContext = createContext({
   getUser: () => undefined,
@@ -20,10 +20,12 @@ const UserProvider = ({ children }) => {
   const [, setCookie] = useCookies()
   const [user, setUser] = useState()
 
+  // Fetching user
   getUser()
 
   async function getUser() {
     const [cookies] = useCookies()
+
     const userData = await getUserData(cookies)
 
     if (!user) {
@@ -44,7 +46,7 @@ const UserProvider = ({ children }) => {
       })
 
       if (data) {
-        setCookie("at", data.login.token, { path: "/" })
+        setCookie('at', data.login.token, { path: '/' })
         setUser(data.login.token)
 
         return data.login.token
@@ -61,7 +63,9 @@ const UserProvider = ({ children }) => {
   }
 
   return (
-    <UserContext.Provider value={context}>{children}</UserContext.Provider>
+    <UserContext.Provider value={context}>
+      {children}
+    </UserContext.Provider>
   )
 }
 

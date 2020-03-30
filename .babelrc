@@ -1,27 +1,27 @@
 {
-    "presets": ["next/babel"],
-    "plugins": [
-      ["module-resolver", {
-        "root": ["/"],
-        "alias": {
-          "@actions": "./src/app/dashboard/components/actions",
-          "@apollo-client": "./src/shared/lib/apollo.js",
-          "@app": "./src/app",
-          "@components": ".src/shared/components",
-          "@config": "./config",
-          "@contexts": "./src/contexts",
-          "@graphql": "./src/graphql",
-          "@layouts": "./src/shared/components/layouts",
-          "@lib": "./src/shared/lib",
-          "@middlewares": "./src/shared/lib/middlewares",
-          "@pages": "./src/pages",
-          "@propTypes": "./src/shared/propTypes",
-          "@shared": "./src/shared",
-          "@schemas": "./src/shared/schemas",
-          "@styles": "./src/shared/styles",
-          "@ui": "./src/shared/components/ui",
-          "@users": "./src/app/users"
-        }
-      }]
-    ]
+  "presets": ["next/babel"],
+  "plugins": [
+    ["module-resolver", {
+      "root": ["./"],
+      "alias": {
+        "@actions": "./src/app/dashboard/components/actions",
+        "@apollo-client": "./src/shared/lib/apollo.js",
+        "@app": "./src/app",
+        "@components": "./src/shared/components",
+        "@config": "./config",
+        "@contexts": "./src/contexts",
+        "@graphql": "./src/graphql",
+        "@layouts": "./src/shared/components/layouts",
+        "@lib": "./src/shared/lib",
+        "@middlewares": "./src/shared/lib/middlewares",
+        "@pages": "./src/pages",
+        "@propTypes": "./src/shared/propTypes",
+        "@shared": "./src/shared",
+        "@schemas": "./src/shared/schemas",
+        "@styles": "./src/shared/styles",
+        "@ui": "./src/shared/components/ui",
+        "@users": "./src/app/users"
+      }
+    }]
+  ]
 }

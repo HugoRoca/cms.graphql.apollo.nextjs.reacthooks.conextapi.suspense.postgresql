@@ -13,6 +13,7 @@ import styles from './Sidebar.scss'
 class Sidebar extends PureComponent {
   render() {
     const { module } = this.props
+
     return (
       <aside className={styles.sidebar}>
         <ul className={styles.navbar}>

@@ -1,16 +1,13 @@
 // Dependencies
-import React, { useContext } from "react"
-import propTypes from "@propTypes"
+import React, { useContext } from 'react'
+import propTypes from '@propTypes'
 
 // Contexts
-import { UserContext } from "@contexts/user"
+import { UserContext } from '@contexts/user'
 
 // Components
-import Title from "@ui/Title"
-import Login from "./Login"
-
-// Styles
-import styles from "./Layout.scss"
+import Title from '@ui/Title'
+import Login from './Login'
 
 const Layout = ({ currentUrl }) => {
   const { login } = useContext(UserContext)
@@ -18,13 +15,12 @@ const Layout = ({ currentUrl }) => {
   return (
     <>
       <Title content="Login" />
-
       <Login login={login} currentUrl={currentUrl} />
     </>
   )
 }
 
-Layout.prototype = {
+Layout.propTypes = {
   currentUrl: propTypes.currentUrl
 }
 

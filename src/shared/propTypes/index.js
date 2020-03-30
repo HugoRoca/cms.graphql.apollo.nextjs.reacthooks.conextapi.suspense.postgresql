@@ -3,17 +3,21 @@ import {
   bool,
   element,
   func,
-  shape,
   object,
   oneOfType,
+  shape,
   string
-} from "prop-types"
+} from 'prop-types'
 
 export default {
   action: string,
   appName: string,
   center: bool,
-  children: oneOfType([array, element, string]),
+  children: oneOfType([
+    array,
+    element,
+    string
+  ]),
   className: string,
   content: string,
   create: func,

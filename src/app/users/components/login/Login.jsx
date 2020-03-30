@@ -1,32 +1,34 @@
 // Dependencies
-import React, { Component } from "react";
+import React, { Component } from 'react'
+import { Alert, DarkButton, PrimaryButton, Input, RenderIf } from 'fogg-ui'
 import propTypes from '@propTypes'
-import { Alert, DarkButton, PrimaryButton, Input, RenderIf } from "fogg-ui";
-import { cx, redirectTo } from "fogg-utils";
+import { cx, redirectTo } from 'fogg-utils'
 
 // Components
-import Logo from "@layouts/main/Logo/Logo";
+import Logo from '@layouts/main/Logo'
 
-import { FormContext } from "@contexts/form";
+// Contexts
+import { FormContext } from '@contexts/form'
 
 // Styles
-import styles from "./Login.scss";
+import styles from './Login.scss'
 
 class Login extends Component {
   state = {
     ready: false,
-    errorMessage: "",
+    errorMessage: '',
     invalidLogin: false
-  };
+  }
 
   componentDidMount() {
     this.setState({
       ready: true
-    });
+    })
   }
 
   handleLogin = async user => {
     const { login, currentUrl } = this.props
+
     const response = await login(user)
 
     if (response.error) {
@@ -40,8 +42,8 @@ class Login extends Component {
   }
 
   render() {
-    const { ready, errorMessage, invalidLogin } = this.state;
-    const { handleInputChange, values } = this.context;
+    const { ready, errorMessage, invalidLogin } = this.state
+    const { handleInputChange, values } = this.context
 
     return (
       <>
@@ -65,6 +67,7 @@ class Login extends Component {
               />
 
               <Input
+                autoComplete="off"
                 type="password"
                 className={styles.password}
                 name="password"
@@ -75,24 +78,31 @@ class Login extends Component {
 
               <div className={styles.actions}>
                 <div className={styles.left}>
-                  <DarkButton name="login" onClick={() => this.handleLogin(values)}>Login</DarkButton>
+                  <DarkButton
+                    name="login"
+                    onClick={() => this.handleLogin(values)}
+                  >
+                    Login
+                  </DarkButton>
                   &nbsp;
-                  <PrimaryButton name="register">Register</PrimaryButton>
+                  <PrimaryButton name="register">
+                    Register
+                  </PrimaryButton>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </>
-    );
+    )
   }
 }
 
-Login.contextType = FormContext;
+Login.contextType = FormContext
 
 Login.propTypes = {
   login: propTypes.login,
   currentUrl: propTypes.currentUrl
-};
+}
 
-export default Login;
+export default Login

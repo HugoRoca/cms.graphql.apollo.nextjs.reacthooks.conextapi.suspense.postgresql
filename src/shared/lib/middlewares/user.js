@@ -1,9 +1,7 @@
-// Dependencies
 import { verify } from '../jwt'
 
 export function User(req) {
-
-  function jwtVerify(cb, at = false) {
+  function jwtVerify(cb) {
     return verify(cb, req.cookies)
   }
 

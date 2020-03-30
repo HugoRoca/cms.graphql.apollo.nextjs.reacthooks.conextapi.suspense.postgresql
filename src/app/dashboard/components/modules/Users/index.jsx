@@ -1,6 +1,9 @@
-import React from "react"
-import propTypes from "@propTypes"
-import Title from "@ui/Title"
+// Dependencies
+import React from 'react'
+import propTypes from '@propTypes'
+
+// Components
+import Title from '@ui/Title'
 
 const Users = ({ action, user }) => {
   console.log(action, user)
@@ -8,12 +11,13 @@ const Users = ({ action, user }) => {
   return (
     <>
       <Title content="Users - Dashboard" />
+
       <h1>Users Module</h1>
     </>
   )
 }
 
-Users.prototype = {
+Users.propTypes = {
   action: propTypes.action,
   user: propTypes.user
 }

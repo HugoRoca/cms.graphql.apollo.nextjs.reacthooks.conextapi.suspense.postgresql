@@ -4,7 +4,7 @@
   background-color: $almostWhite;
   border-right: 1px solid $alto;
   font-size: 14px;
-  height: 100vh;
+  height: 130vh;
   width: 200px;
 
   .navbar {
@@ -17,14 +17,15 @@
       position: relative;
 
       a {
-        display: block;
-        padding: 10px 0 10px 20px;
-        border-top: 1px solid $white;
         border-bottom: 1px solid $loblolly;
+        border-top: 1px solid $white;
         color: $shuttleGray;
+        display: block;
+        font-size: 13px;
+        font-weight: bold;
+        padding: 10px 0 10px 20px;
         text-decoration: none;
         text-shadow: 0 1px 0 $white;
-        font-weight: bold;
         width: 100%;
 
         i {
@@ -37,6 +38,10 @@
           right: 10px;
           top: 9px;
           text-shadow: none;
+
+          div {
+            font-size: 11px;
+          }
         }
 
         &:hover {

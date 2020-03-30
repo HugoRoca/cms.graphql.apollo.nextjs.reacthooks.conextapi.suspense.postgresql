@@ -1,5 +1,6 @@
+// Dependencies
 import React, { useState, createContext } from 'react'
-import { element, object } from 'prop-types'
+import propTypes from '@propTypes'
 
 export const FormContext = createContext({
   handleInputChange: () => undefined,
@@ -9,7 +10,7 @@ export const FormContext = createContext({
   values: {}
 })
 
-const FromProvider = ({ children, initialValues = {} }) => {
+const FormProvider = ({ children, initialValues = {} }) => {
   const [state, setState] = useState(initialValues)
 
   function setValue(name, value) {
@@ -38,10 +39,12 @@ const FromProvider = ({ children, initialValues = {} }) => {
   }
 
   function handleInputChange({ target: { name, value } }) {
-    setState(state => ({
-      ...state,
-      [name]: value
-    }))
+    if (state[name] !== value) {
+      setState(state => ({
+        ...state,
+        [name]: value
+      }))
+    }
   }
 
   const context = {
@@ -53,13 +56,15 @@ const FromProvider = ({ children, initialValues = {} }) => {
   }
 
   return (
-    <FormContext.Provider value={context}>{children}</FormContext.Provider>
+    <FormContext.Provider value={context}>
+      {children}
+    </FormContext.Provider>
   )
 }
 
-FromProvider.propTypes = {
-  children: element.isRequired,
-  initialValues: object
+FormProvider.propTypes = {
+  children: propTypes.children.isRequired,
+  initialValues: propTypes.initialValues
 }
 
-export default FromProvider
+export default FormProvider

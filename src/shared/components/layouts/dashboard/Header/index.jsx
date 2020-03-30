@@ -1,11 +1,14 @@
-import React, { PureComponent } from "react"
-import styles from "./Header.scss"
-import { Headers } from "node-fetch"
-import propTypes from "@propTypes"
+// Dependencies
+import React, { PureComponent } from 'react'
+import propTypes from '@propTypes'
+
+// Styles
+import styles from './Header.scss'
 
 class Header extends PureComponent {
   render() {
     const { appName } = this.props
+
     return (
       <header className={styles.header}>
         <div className={styles.wrapper}>
@@ -15,10 +18,12 @@ class Header extends PureComponent {
 
           <div className={styles.userProfile}>
             <div className={styles.avatar}>
-              <img src="/images/avatar.jpg" alt="Hugo" />
+              <img src="/images/avatar.jpg" alt="Carlos Santana" />
             </div>
 
-            <div className={styles.name}>Hugo Roca</div>
+            <div className={styles.name}>
+              Carlos Santana
+            </div>
           </div>
         </div>
       </header>
@@ -26,8 +31,8 @@ class Header extends PureComponent {
   }
 }
 
-Headers.propTypes = {
-  appName: propTypes.appName
+Header.propTypes = {
+  appName: propTypes.appName.isRequired
 }
 
 export default Header

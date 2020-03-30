@@ -1,3 +1,4 @@
+// Dependencies
 import React, { PureComponent } from 'react'
 import Head from 'next/head'
 import propTypes from '@propTypes'
